@@ -5,14 +5,13 @@
 <title>Сергей & Вероника</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Свадебные шрифты -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Meddon&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(180deg, #fff6f0, #fde2e2);
+    background: #DAC4AD;
     color: #3a2c2c;
 }
 
@@ -32,13 +31,10 @@ body {
     to {opacity: 1; transform: translateY(0);}
 }
 
-/* фон с сердечками */
+/* лепестки */
 .hearts {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     overflow: hidden;
     z-index: 1;
@@ -46,64 +42,77 @@ body {
 
 .heart {
     position: absolute;
-    bottom: -40px;
-    color: rgba(255,255,255,0.85);
-    animation: floatUp linear infinite;
-    filter: blur(0.4px);
+    top: -40px;
+    color: rgba(255,255,255,0.9);
+    font-size: 22px;
+    animation: fall linear infinite;
+    pointer-events: none;
+    filter: blur(0.3px);
 }
 
-@keyframes floatUp {
-    from { transform: translateY(0) scale(1); opacity: 1;}
-    to { transform: translateY(-120vh) scale(1.5); opacity: 0;}
+/* покачивание и падение */
+@keyframes fall {
+    0% {
+        transform: translate(0, -40px) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(20px, 25vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(-20px, 55vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(15px, 80vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(-10px, 110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 .photo {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     margin-bottom: 30px;
+    box-shadow: 0 15px 30px rgba(80,50,30,0.3);
 }
 
-/* КАЛЛИГРАФИЧЕСКИЕ ИМЕНА */
 h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 54px;
     font-weight: 400;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, #cfa5a5, #fff, #cfa5a5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4b2e1f;
+    text-shadow: 0 0 15px rgba(90,50,30,0.4);
     animation: glow 4s ease-in-out infinite;
 }
 
 @keyframes glow {
-    0% { text-shadow: 0 0 5px rgba(255,200,200,0.4); }
-    50% { text-shadow: 0 0 25px rgba(255,220,220,0.9); }
-    100% { text-shadow: 0 0 5px rgba(255,200,200,0.4); }
+    0% { text-shadow: 0 0 5px rgba(120,70,40,0.4); }
+    50% { text-shadow: 0 0 25px rgba(120,70,40,0.8); }
+    100% { text-shadow: 0 0 5px rgba(120,70,40,0.4); }
 }
 
-/* Дата */
 .date {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     letter-spacing: 3px;
     margin: 20px 0;
-    color: #a14c4c;
+    color: #7a4b32;
 }
 
-/* карточки */
 .card {
     font-family: 'Playfair Display', serif;
-    background: #ffffffcc;
+    background: rgba(255,248,235,0.85);
     border-radius: 20px;
     padding: 25px;
     margin: 30px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 25px rgba(90,60,40,0.25);
     position: relative;
     overflow: hidden;
 }
 
-/* блик */
 .card::after {
     content: "";
     position: absolute;
@@ -111,7 +120,7 @@ h1 {
     left: -60%;
     width: 40%;
     height: 200%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
     animation: shine 6s infinite;
 }
 
@@ -120,40 +129,35 @@ h1 {
     100% { left: 120%; }
 }
 
-/* Таймер */
 .countdown {
     font-family: 'Meddon', cursive;
     font-size: 26px;
     margin-top: 20px;
-    color: #8b4a4a;
+    color: #7a4b32;
 }
 
-/* кнопки */
 .button {
     display: inline-block;
     margin-top: 20px;
     padding: 15px 34px;
     border-radius: 40px;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    color: #5a1f1f;
+    background: linear-gradient(135deg, #c8a27a, #efd6b3);
+    color: #4b2e1f;
     text-decoration: none;
     font-size: 16px;
     transition: transform 0.3s ease;
-    box-shadow: 0 0 15px rgba(255,180,180,0.6);
+    box-shadow: 0 0 20px rgba(140,90,50,0.4);
     animation: pulse 3s infinite;
 }
 
-.button:hover {
-    transform: scale(1.05);
-}
+.button:hover { transform: scale(1.05); }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(255,180,180,0.5); }
-    50% { box-shadow: 0 0 25px rgba(255,180,180,0.9); }
-    100% { box-shadow: 0 0 10px rgba(255,180,180,0.5); }
+    0% { box-shadow: 0 0 10px rgba(140,90,50,0.4); }
+    50% { box-shadow: 0 0 25px rgba(140,90,50,0.8); }
+    100% { box-shadow: 0 0 10px rgba(140,90,50,0.4); }
 }
 
-/* palette */
 .palette {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -161,9 +165,7 @@ h1 {
     gap: 12px;
     margin-top: 25px;
 }
-.palette div {
-    border-radius: 18px;
-}
+.palette div { border-radius: 18px; }
 .p1 { background:#1c0f09; }
 .p2 { background:#4d3729; }
 .p3 { background:#725a4b; }
@@ -188,34 +190,24 @@ h1 {
 Начало в <b>17:00</b><br><br>
 Кафе «Русь»<br>
 ул. Стачек, 44
-    <div class="countdown" id="timer"></div>
+<div class="countdown" id="timer"></div>
 </div>
 
 <div class="card">
 <h2>Как нас найти</h2>
-<a class="button" target="_blank"
-href="https://yandex.ru/maps/?text=Екатеринбург%20Стачек%2044">
-Открыть карту
-</a>
+<a class="button" target="_blank" href="https://yandex.ru/maps/?text=Екатеринбург%20Стачек%2044">Открыть карту</a>
 </div>
 
 <div class="card">
 <h2>Я иду 🤍</h2>
-<a class="button" target="_blank"
-href="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform">
-Заполнить анкету
-</a>
+<a class="button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform">Заполнить анкету</a>
 </div>
 
 <div class="card">
 <h2>Дресс-код</h2>
 <p>Тёплая палитра нашей свадьбы</p>
 <div class="palette">
-    <div class="p1"></div>
-    <div class="p2"></div>
-    <div class="p3"></div>
-    <div class="p4"></div>
-    <div class="p5"></div>
+<div class="p1"></div><div class="p2"></div><div class="p3"></div><div class="p4"></div><div class="p5"></div>
 </div>
 </div>
 
@@ -231,23 +223,22 @@ function updateTimer() {
 }
 updateTimer();
 
-/* сердечки и звёзды */
+/* лепестки */
 const heartsContainer = document.getElementById("hearts");
-const icons = ["🤍", "✦", "✧", "★"];
+const icons = ["❀", "✿", "❁", "❃"];
 
 function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (14 + Math.random() * 22) + "px";
-    heart.style.animationDuration = (6 + Math.random() * 10) + "s";
-    heart.style.opacity = Math.random();
-    heartsContainer.appendChild(heart);
-    setTimeout(() => heart.remove(), 15000);
+    const petal = document.createElement("div");
+    petal.className = "heart";
+    petal.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (16 + Math.random() * 20) + "px";
+    petal.style.animationDuration = (10 + Math.random() * 10) + "s";
+    petal.style.opacity = 0.5 + Math.random() * 0.5;
+    heartsContainer.appendChild(petal);
+    setTimeout(() => petal.remove(), 20000);
 }
-
-setInterval(createHeart, 350);
+setInterval(createHeart, 400);
 </script>
 
 </body>
