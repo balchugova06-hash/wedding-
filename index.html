@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Сергей & Вероника</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.photo {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 300;
+}
+
+.date {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
+.info {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.countdown {
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+a.button {
+    display: inline-block;
+    margin: 25px 0;
+    padding: 15px 30px;
+    border-radius: 40px;
+    background: #ffffff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: #444;
+    margin: 40px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="photo.jpg" class="photo">
+
+<h1>Сергей & Вероника</h1>
+
+<div class="date">14 · 02 · 2026</div>
+
+<div class="info">
+Екатеринбург<br>
+начало в 17:00<br><br>
+Кафе «Русь»<br>
+ул. Стачек, 44
+</div>
+
+<div class="countdown" id="timer"></div>
+
+<a class="button" target="_blank"
+href="https://yandex.ru/maps/?text=Екатеринбург%20Стачек%2044">
+Построить маршрут
+</a>
+
+<hr>
+
+<h2>Я иду</h2>
+
+<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform?embedded=true" width="640" height="740" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe> -->
+<!-- ↓↓↓↓↓ -->
+<!-- iframe -->
+<!-- ↑↑↑↑↑ -->
+
+</div>
+
+<script>
+const weddingDate = new Date("2026-02-14T17:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+
+    if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "Сегодня свадьба 🤍";
+        return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("timer").innerHTML =
+        До свадьбы: ${d} дн ${h} ч ${m} мин;
+}, 1000);
+</script>
+
+</body>
+</html>
