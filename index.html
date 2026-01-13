@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Свадебные шрифты -->
-<link href="https://fonts.googleapis.com/css2?family=Meddon&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Meddon&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -64,11 +64,22 @@ body {
     margin-bottom: 30px;
 }
 
-/* Имена */
+/* КАЛЛИГРАФИЧЕСКИЕ ИМЕНА */
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 600;
+    font-family: 'Great Vibes', cursive;
+    font-size: 54px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #cfa5a5, #fff, #cfa5a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px rgba(255,200,200,0.4); }
+    50% { text-shadow: 0 0 25px rgba(255,220,220,0.9); }
+    100% { text-shadow: 0 0 5px rgba(255,200,200,0.4); }
 }
 
 /* Дата */
@@ -80,7 +91,7 @@ h1 {
     color: #a14c4c;
 }
 
-/* Текст локации и времени */
+/* карточки */
 .card {
     font-family: 'Playfair Display', serif;
     background: #ffffffcc;
@@ -177,7 +188,7 @@ h1 {
 Начало в <b>17:00</b><br><br>
 Кафе «Русь»<br>
 ул. Стачек, 44
-<div class="countdown" id="timer"></div>
+    <div class="countdown" id="timer"></div>
 </div>
 
 <div class="card">
@@ -195,6 +206,7 @@ href="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFT
 Заполнить анкету
 </a>
 </div>
+
 <div class="card">
 <h2>Дресс-код</h2>
 <p>Тёплая палитра нашей свадьбы</p>
