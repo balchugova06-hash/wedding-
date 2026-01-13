@@ -5,6 +5,9 @@
 <title>Сергей & Вероника</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Свадебные шрифты -->
+<link href="https://fonts.googleapis.com/css2?family=Meddon&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
@@ -61,20 +64,25 @@ body {
     margin-bottom: 30px;
 }
 
+/* Имена */
 h1 {
-    font-size: 38px;
-    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 600;
 }
 
+/* Дата */
 .date {
+    font-family: 'Playfair Display', serif;
     font-size: 22px;
     letter-spacing: 3px;
     margin: 20px 0;
     color: #a14c4c;
 }
 
-/* карточки с бликом */
+/* Текст локации и времени */
 .card {
+    font-family: 'Playfair Display', serif;
     background: #ffffffcc;
     border-radius: 20px;
     padding: 25px;
@@ -84,6 +92,7 @@ h1 {
     overflow: hidden;
 }
 
+/* блик */
 .card::after {
     content: "";
     position: absolute;
@@ -100,7 +109,15 @@ h1 {
     100% { left: 120%; }
 }
 
-/* светящиеся кнопки */
+/* Таймер */
+.countdown {
+    font-family: 'Meddon', cursive;
+    font-size: 26px;
+    margin-top: 20px;
+    color: #8b4a4a;
+}
+
+/* кнопки */
 .button {
     display: inline-block;
     margin-top: 20px;
@@ -141,11 +158,6 @@ h1 {
 .p3 { background:#725a4b; }
 .p4 { background:#9e8474; }
 .p5 { background:#d5bda3; grid-column: span 2; }
-
-.countdown {
-    margin-top: 15px;
-    font-size: 20px;
-}
 </style>
 </head>
 
@@ -183,7 +195,6 @@ href="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFT
 Заполнить анкету
 </a>
 </div>
-
 <div class="card">
 <h2>Дресс-код</h2>
 <p>Тёплая палитра нашей свадьбы</p>
