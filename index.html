@@ -20,10 +20,25 @@ body {
     text-align: center;
 }
 
+.photo-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
 .photo {
     width: 100%;
     border-radius: 20px;
-    margin-bottom: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.photo-fallback {
+    display: none;
+    width: 100%;
+    padding: 80px 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+    color: #6a2a2a;
+    font-size: 22px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
@@ -56,7 +71,7 @@ h1 {
 .countdown {
     font-size: 22px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 15px;
     color: #8b3a3a;
 }
 
@@ -85,6 +100,53 @@ iframe {
 h2 {
     font-weight: 400;
 }
+
+/* Pinterest palette */
+.palette {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 120px 120px;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.palette .tile {
+    position: relative;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.palette .tile:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+}
+
+.palette .label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.palette .tile:hover .label {
+    opacity: 1;
+}
+
+.p1 { background:#1c0f09; }
+.p2 { background:#4d3729; }
+.p3 { background:#725a4b; }
+.p4 { background:#9e8474; }
+.p5 { background:#d5bda3; grid-column: span 2; }
 </style>
 </head>
 
@@ -92,7 +154,13 @@ h2 {
 
 <div class="container">
 
-<img src="photo.jpg" class="photo" alt="Сергей и Вероника">
+<div class="photo-wrapper">
+    <img src="photo.jpg" class="photo" alt="Сергей и Вероника"
+         onerror="this.style.display='none'; document.getElementById('fallback').style.display='block';">
+    <div class="photo-fallback" id="fallback">
+        Сергей & Вероника 🤍
+    </div>
+</div>
 
 <h1>Сергей & Вероника</h1>
 <div class="date">14 · 02 · 2026</div>
@@ -112,47 +180,19 @@ href="https://yandex.ru/maps/?text=Екатеринбург%20Стачек%2044"
 </div>
 
 <div class="card">
-<h2>Как нас найти</h2>
-<iframe 
-src="https://yandex.ru/map-widget/v1/?ll=60.601743%2C56.885313&mode=search&ol=geo&text=Екатеринбург%20Стачек%2044&z=16"
-height="350">
-</iframe>
+<h2>Дресс-код</h2>
+<p>Тёплая, элегантная палитра — вдохновлённая шёлком, кофе и шампанским 🤍</p>
+
+<div class="palette">
+    <div class="tile p1"><div class="label">Chocolate</div></div>
+    <div class="tile p2"><div class="label">Coffee</div></div>
+    <div class="tile p3"><div class="label">Mocha</div></div>
+    <div class="tile p4"><div class="label">Taupe</div></div>
+    <div class="tile p5"><div class="label">Champagne</div></div>
+</div>
 </div>
 
 <div class="card">
-<h2>Я иду 🤍</h2>
-<iframe
-src="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform?embedded=true"
-height="760">
-</iframe>
-</div>
-
-</div>
-
-<script>
-// Екатеринбург UTC+5
-const weddingDate = new Date(Date.UTC(2026, 1, 14, 12, 0, 0));
-
-function updateTimer() {
-    const now = new Date();
-    const diff = weddingDate - now;
-
-    if (diff <= 0) {
-        document.getElementById("timer").innerHTML = "Сегодня свадьба 🤍";
-        return;
-    }
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-
-    document.getElementById("timer").innerHTML =
-        До свадьбы: ${d} дн ${h} ч ${m} мин;
-}
-
-updateTimer();
-setInterval(updateTimer, 60000);
-</script>
-
-</body>
-</html>
+<h2>Как нас найти</h2>
+<iframe 
+src="https://yandex.ru/map-widget/v1/?ll=60.601743%2C56.885313&mode=search&ol=geo&text=Екатеринбург%20Стачек%2044&z=16"
