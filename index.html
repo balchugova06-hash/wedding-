@@ -8,33 +8,44 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f0f0f;
-    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, #fff6f0, #fde2e2);
+    color: #3a2c2c;
 }
 
 .container {
-    max-width: 700px;
+    max-width: 720px;
     margin: auto;
-    padding: 20px;
+    padding: 24px;
     text-align: center;
 }
 
 .photo {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 20px;
     margin-bottom: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: 300;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 10px;
 }
 
 .date {
     font-size: 22px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin: 20px 0;
+    color: #a14c4c;
+}
+
+.card {
+    background: #ffffffcc;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .info {
@@ -43,32 +54,36 @@ h1 {
 }
 
 .countdown {
-    font-size: 20px;
-    margin: 30px 0;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #8b3a3a;
 }
 
-a.button {
+.button {
     display: inline-block;
-    margin: 25px 0;
-    padding: 15px 30px;
+    margin-top: 20px;
+    padding: 15px 34px;
     border-radius: 40px;
-    background: #ffffff;
-    color: #000;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #5a1f1f;
     text-decoration: none;
     font-size: 16px;
+    font-weight: 500;
+}
+
+.button:hover {
+    opacity: 0.9;
 }
 
 iframe {
     width: 100%;
     border: none;
-    border-radius: 12px;
+    border-radius: 18px;
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background: #444;
-    margin: 40px 0;
+h2 {
+    font-weight: 400;
 }
 </style>
 </head>
@@ -77,18 +92,16 @@ hr {
 
 <div class="container">
 
-<img src="photo.jpg" class="photo">
+<img src="photo.jpg" class="photo" alt="Сергей и Вероника">
 
 <h1>Сергей & Вероника</h1>
-
 <div class="date">14 · 02 · 2026</div>
 
-<div class="info">
+<div class="card info">
 Екатеринбург<br>
-начало в 17:00<br><br>
+Начало в <strong>17:00</strong><br><br>
 Кафе «Русь»<br>
 ул. Стачек, 44
-</div>
 
 <div class="countdown" id="timer"></div>
 
@@ -96,23 +109,32 @@ hr {
 href="https://yandex.ru/maps/?text=Екатеринбург%20Стачек%2044">
 Построить маршрут
 </a>
+</div>
 
-<hr>
+<div class="card">
+<h2>Как нас найти</h2>
+<iframe 
+src="https://yandex.ru/map-widget/v1/?ll=60.601743%2C56.885313&mode=search&ol=geo&text=Екатеринбург%20Стачек%2044&z=16"
+height="350">
+</iframe>
+</div>
 
-<h2>Я иду</h2>
-
-<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform?embedded=true" width="640" height="740" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe> -->
-<!-- ↓↓↓↓↓ -->
-<!-- iframe -->
-<!-- ↑↑↑↑↑ -->
+<div class="card">
+<h2>Я иду 🤍</h2>
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLScsqOGl0eSOyXXo4rQN-E6vvsPnMrWTFTqfyPpRRaQKKgTvWQ/viewform?embedded=true"
+height="760">
+</iframe>
+</div>
 
 </div>
 
 <script>
-const weddingDate = new Date("2026-02-14T17:00:00").getTime();
+// Екатеринбург UTC+5
+const weddingDate = new Date(Date.UTC(2026, 1, 14, 12, 0, 0));
 
-setInterval(() => {
-    const now = new Date().getTime();
+function updateTimer() {
+    const now = new Date();
     const diff = weddingDate - now;
 
     if (diff <= 0) {
@@ -126,7 +148,10 @@ setInterval(() => {
 
     document.getElementById("timer").innerHTML =
         До свадьбы: ${d} дн ${h} ч ${m} мин;
-}, 1000);
+}
+
+updateTimer();
+setInterval(updateTimer, 60000);
 </script>
 
 </body>
